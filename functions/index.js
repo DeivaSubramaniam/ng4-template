@@ -1,31 +1,9 @@
 var functions = require('firebase-functions');
-// var cors = require('cors')();
-var whitelist = ['https://ng4-template.firebaseapp.com', 'https://ng4-template.firebaseapp.com/']
-var corsOptions = {
-    origin: function (origin, callback) {
-        console.debug('origin' + origin);
-        if (whitelist.indexOf(origin) !== -1) {
-
-            console.debug('origin true');
-            callback(null, true)
-        } else {
-            console.debug('origin false');
-            
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}
-
-var cors = require('cors');
-// var cors = require('cors')(corsOptions);
-
-exports.helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Hello from Firebase!");
-})
-
+var cors = require('cors')({ origin: true });
 
 exports.users = functions.https.onRequest((req, res) => {
-    cors((req, res) => {
+    console.log('USER!!!!');
+    cors(req, res, () => {
         const users = [{
             "address": "669 Kathleen Court, Topanga, Utah, 9244",
             "email": "blairgay@dragbot.com",
@@ -220,16 +198,3 @@ exports.users = functions.https.onRequest((req, res) => {
         res.status(200).send(users);
     });
 });
-
-// exports.usersCounts = functions.https.onRequest((request, response) => {
-//     functions.database.ref('/users')
-//         .onWrite(function(event){
-//         })
-//         .on("children_added", function(){
-//         })
-//         .on("children_removed", function(){
-
-//         });
-
-//     response.send("Ok");
-// })
