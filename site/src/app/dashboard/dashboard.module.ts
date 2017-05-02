@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './dashboard.routes';
 import { UserService } from './services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFire, AngularFireModule } from 'angularfire2';
 
 export const config = {
     apiKey: "AIzaSyCIXbaG6B8THGyg-m8pI0Azb_HkCUHIZqM",
@@ -20,11 +19,10 @@ export const config = {
         CommonModule,
         HttpModule,
         BrowserAnimationsModule,
-        AngularFireModule.initializeApp(config),
         RouterModule.forChild(MODULE_ROUTES)
     ],
     declarations: [MODULE_COMPONENTS]
-    , providers: [UserService, AngularFire]
+    , providers: [UserService]
 })
 
 export class DashboardModule { }
