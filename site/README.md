@@ -1,3 +1,6 @@
+# Common errors
+If you get a "Cannot find module '@angular/animations/browser'." during ng serve, please run npm i "@angular/animations"
+
 # Site
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
