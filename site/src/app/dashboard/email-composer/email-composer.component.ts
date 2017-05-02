@@ -13,8 +13,9 @@ export class EmailComposerComponent implements OnInit {
     subject: FormControl;
     body: FormControl;
 
-    constructor(private builder: FormBuilder) { 
-        
+    constructor(private builder: FormBuilder) { }
+
+    ngOnInit() {
         this.subject = new FormControl('', Validators.required);
         this.body = new FormControl('', Validators.required);
 
@@ -22,9 +23,6 @@ export class EmailComposerComponent implements OnInit {
             'subject': this.subject,
             'body': this.body
         });
-    }
-
-    ngOnInit() {
     }
 
     onSubmit(){
