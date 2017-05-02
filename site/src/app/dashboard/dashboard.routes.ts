@@ -9,6 +9,7 @@ import { TypographyComponent } from './typography/typography.component';
 import { MapsComponent } from './maps/maps.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { EmailComposerComponent } from './email-composer/email-composer.component';
 
 export const MODULE_ROUTES: Route[] =[
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -20,7 +21,8 @@ export const MODULE_ROUTES: Route[] =[
     { path: 'typography', component: TypographyComponent },
     { path: 'maps', component: MapsComponent },
     { path: 'upgrade', component: UpgradeComponent },
-    { path: 'user-table', component: UserTableComponent }
+    { path: 'user-table', component: UserTableComponent },
+    { path: 'email-composer', component: EmailComposerComponent }
 ]
 
 export const MODULE_COMPONENTS = [
@@ -32,5 +34,6 @@ export const MODULE_COMPONENTS = [
     TypographyComponent,
     MapsComponent,
     UpgradeComponent,
-    UserTableComponent
+    UserTableComponent,
+    EmailComposerComponent
 ]

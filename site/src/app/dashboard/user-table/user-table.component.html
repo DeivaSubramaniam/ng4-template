@@ -1,19 +1,35 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="transform: translate3d(0px, 0px, 0px); opacity: 1;">
+                    <div class="header">
+                        <h4 class="title">Striped Table with Hover</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
 
-<table class="table table-hover table-condensed table-striped">
-    <thead>
-        <th>Id</th>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Address</th>
-        <th>Email</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{ user.address }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
-            <td>{{ user.address }}</td>
-            <td>{{ user.address }}</td>
-        </tr>
-    </tbody>
-</table>
+                        <table class="table table-hover table-condensed table-striped">
+                            <thead>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of users">
+                                    <td>{{ user['first-name'] }}</td>
+                                    <td>{{ user['last-name'] }}</td>
+                                    <td>{{ user.address }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.phone }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

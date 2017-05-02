@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { MODULE_COMPONENTS, MODULE_ROUTES } from './dashboard.routes';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,6 +20,7 @@ export const config = {
         CommonModule,
         HttpModule,
         BrowserAnimationsModule,
+        ReactiveFormsModule,
         RouterModule.forChild(MODULE_ROUTES)
     ],
     declarations: [MODULE_COMPONENTS]
