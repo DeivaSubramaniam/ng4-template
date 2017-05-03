@@ -1,6 +1,17 @@
 var functions = require('firebase-functions');
 var cors = require('cors')({ origin: true });
 
+const nodemailer = require('nodemailer');
+
+exports.sendEmail = functions.https.onRequest((res, resp) => {
+    cors(res, resp, () => {
+        
+
+        resp.send('ok!');
+    });
+});
+
+
 exports.users = functions.https.onRequest((req, res) => {
     console.log('USER!!!!');
     cors(req, res, () => {
