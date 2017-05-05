@@ -6,6 +6,7 @@ import { MODULE_COMPONENTS, MODULE_ROUTES } from './dashboard.routes';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmailService } from './services/email.service';
 
 export const config = {
     apiKey: "AIzaSyCIXbaG6B8THGyg-m8pI0Azb_HkCUHIZqM",
@@ -24,7 +25,7 @@ export const config = {
         RouterModule.forChild(MODULE_ROUTES)
     ],
     declarations: [MODULE_COMPONENTS]
-    , providers: [UserService]
+    , providers: [UserService, EmailService]
 })
 
 export class DashboardModule { }

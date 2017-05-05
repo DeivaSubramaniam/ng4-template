@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { EmailService } from '../services/email.service';
 
 @Component({
     moduleId: module.id,
@@ -10,23 +11,27 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class EmailComposerComponent implements OnInit {
 
     form: FormGroup;
+    to: FormControl;
     subject: FormControl;
-    body: FormControl;
+    message: FormControl;
 
-    constructor(private builder: FormBuilder) { }
+    constructor(private builder: FormBuilder, private emailService: EmailService) { }
 
     ngOnInit() {
+        this.to = new FormControl('guillet84@gmail.com  ', Validators.required);
         this.subject = new FormControl('', Validators.required);
-        this.body = new FormControl('', Validators.required);
+        this.message = new FormControl('', Validators.required);
 
         this.form = this.builder.group({
+            'to': this.to,
             'subject': this.subject,
-            'body': this.body
+            'message': this.message
         });
     }
 
-    onSubmit(){
+    onSubmit() {
         const email = this.form.value;
+        this.emailService.sendEmail(email.to, email.subject, email.message);
 
         console.log(email);
     }
