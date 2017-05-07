@@ -1,4 +1,4 @@
-<div class="main-content" >
+<div class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
@@ -11,7 +11,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Subject</label>
+                                        <label>To</label>
                                         <input formControlName="to" type="text" class="form-control" placeholder="to" value="Hello!">
                                     </div>
                                 </div>
@@ -20,7 +20,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Subject</label>
-                                        <input formControlName="subject" type="text" class="form-control" placeholder="Subject" value="Hello!">
+                                        <input [disabled]="formDisabled" formControlName="subject" type="text" class="form-control" placeholder="Subject" value="Hello!">
                                     </div>
                                 </div>
                             </div>
@@ -28,11 +28,12 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Message</label>
-                                        <textarea formControlName="message" rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                        <textarea [disabled]="formDisabled" formControlName="message" rows="5" class="form-control" placeholder="Here can be your description"
+                                            value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Send</button>
+                            <button [disabled]="!form.valid || formDisabled" type="submit" class="btn btn-info btn-fill pull-right">Send</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>

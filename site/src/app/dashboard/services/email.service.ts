@@ -8,7 +8,7 @@ export class EmailService {
 
     sendEmailFuncUrl = 'https://us-central1-ng4-template.cloudfunctions.net/sendEmail';
 
-    sendEmail(to: string, subject: string, message: string) {
+    sendEmail(to: string, subject: string, message: string, callback: any, errorCallback: any) {
         const parameters = {
             to: to,
             subject: subject,
@@ -18,9 +18,14 @@ export class EmailService {
         this.http
             .post(this.sendEmailFuncUrl, parameters)
             .map(res => res.json())
-            .subscribe(val=>{
-                console.log('subcribe => ' + val)
+            .subscribe(val => {
+                if (val.success) {
+                    if (callback)
+                        callback();
+                } else {
+                    if (errorCallback)
+                        errorCallback();
+                }
             });
-        console.log('sendEmail 2');
     }
 }

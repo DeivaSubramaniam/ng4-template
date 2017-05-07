@@ -41,7 +41,7 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
             console.log('Message %s sent: %s', info.messageId, info.response);
         });
 
-        req.send({
+        res.send({
             success: true
         });
     });
