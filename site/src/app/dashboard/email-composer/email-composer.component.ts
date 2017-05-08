@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { EmailService } from '../services/email.service';
 
@@ -17,7 +17,9 @@ export class EmailComposerComponent implements OnInit {
     message: FormControl;
     formDisabled: boolean;
 
-    constructor(private builder: FormBuilder, private emailService: EmailService) { }
+    constructor(private builder: FormBuilder, private emailService: EmailService, private _ngZone: NgZone) { 
+        window['angularComponentRef'] = {component: this, zone: _ngZone};
+    }
 
     ngOnInit() {
         this.formDisabled = false;
@@ -32,7 +34,7 @@ export class EmailComposerComponent implements OnInit {
         });
     }
 
-    onSubmit() {
+    sendEmail() {
         const email = this.form.value;
         var self = this;
         this.formDisabled = true;

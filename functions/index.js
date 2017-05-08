@@ -1,5 +1,5 @@
-
 var functions = require('firebase-functions');
+var request = require('request');
 var cors = require('cors')({ origin: true });
 
 const nodemailer = require('nodemailer');
@@ -10,41 +10,58 @@ const nodemailer = require('nodemailer');
 exports.sendEmail = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
 
-        const to = req.body.to;
-        const subject = req.body.subject;
-        const message = req.body.message;
-        console.log('to:' + to + ' - subject: ' + subject + ' - message: ' + message);
-        
-        console.log('sendEmail');
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'gtamanaha.io@gmail.com',
-                pass: 'gtamanaha'
+        const secret = '6Lf1rhgUAAAAALKDz46KvpHZZEl-i-blbCMbAerd';
+        const recaptchaResponse = req.body['g-recaptcha-response'];
+        const remoteIp = req.connection.remoteAddress;
+        const verificationUrl = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + recaptchaResponse + "&remoteip=" + remoteIp;
+
+
+        request(verificationUrl, function (error, response, body) {
+            body = JSON.parse(body);
+            // Success will be true or false depending upon captcha validation.
+            if (body.success !== undefined && !body.success) {
+                return res.json({ "responseCode": 1, "responseDesc": "Failed captcha verification" });
             }
-        });
-
-        // setup email data with unicode symbols
-        let mailOptions = {
-            from: 'gtamanaha.io@gmail.com', // sender address
-            to: to, // list of receivers
-            subject: subject, // Subject line
-            text: message // plain text body
-            //html: '<b>Hello world ?</b>' // html body
-        };
-
-        // send mail with defined transport object
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
-            }
-            console.log('Message %s sent: %s', info.messageId, info.response);
-        });
-
-        res.send({
-            success: true
+            res.json({ "responseCode": 0, "responseDesc": "Sucess" });
         });
     });
+
+
+    const to = req.body.to;
+    const subject = req.body.subject;
+    const message = req.body.message;
+    console.log('to:' + to + ' - subject: ' + subject + ' - message: ' + message);
+
+    console.log('sendEmail');
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'gtamanaha.io@gmail.com',
+            pass: 'gtamanaha'
+        }
+    });
+
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: 'gtamanaha.io@gmail.com', // sender address
+        to: to, // list of receivers
+        subject: subject, // Subject line
+        text: message // plain text body
+        //html: '<b>Hello world ?</b>' // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+    });
+
+    res.send({
+        success: true
+    });
+});
 });
 
 
