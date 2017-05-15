@@ -1,0 +1,27 @@
+.sidebar .user,
+.bootstrap-navbar .user {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+.sidebar .user .photo,
+.bootstrap-navbar .user .photo {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto;
+}
+.sidebar .user .photo img,
+.bootstrap-navbar .user .photo img {
+  width: 100%;
+}
+.sidebar .user a,
+.bootstrap-navbar .user a {
+  text-align: center;
+  color: #FFFFFF;
+  padding: 8px 14px;
+  text-align: center;
+  display: block;
+}

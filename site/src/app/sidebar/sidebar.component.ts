@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from './sidebar-routes.config';
 import { MenuType } from './sidebar.metadata';
+import { AuthService } from '../dashboard/services/auth.service';
 
 @Component({
     moduleId: module.id,
@@ -10,10 +11,14 @@ import { MenuType } from './sidebar.metadata';
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
+    
     isCollapsed = true;
-    constructor() {}
+
+    constructor(private authService: AuthService) {}
+
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem.menuType !== MenuType.BRAND);
+
     }
     public get menuIcon(): string {
         return this.isCollapsed ? '☰' : '✖';
@@ -22,5 +27,10 @@ export class SidebarComponent implements OnInit {
         return {
             'pull-xs-right': this.isCollapsed && menuItem.menuType === MenuType.RIGHT
         };
+    }
+
+    isLoggedIn() : boolean
+    {
+        return this.authService.isLogged();
     }
 }

@@ -7,8 +7,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmailService } from './services/email.service';
-import { AuthGuardService } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service';
 
 export const config = {
     apiKey: "AIzaSyCIXbaG6B8THGyg-m8pI0Azb_HkCUHIZqM",
@@ -26,8 +24,8 @@ export const config = {
         ReactiveFormsModule,
         RouterModule.forChild(MODULE_ROUTES)
     ],
-    declarations: [MODULE_COMPONENTS]
-    , providers: [UserService, EmailService, AuthGuardService, AuthService]
+    declarations: [MODULE_COMPONENTS], 
+    providers: [UserService, EmailService]
 })
 
 export class DashboardModule { }

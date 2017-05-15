@@ -10,9 +10,10 @@ import { MapsComponent } from './maps/maps.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { EmailComposerComponent } from './email-composer/email-composer.component';
-import { AuthGuardService } from './services/auth-guard.service'
+import { AuthGuardService } from './services/auth-guard.service';
+import { LoginComponent } from './login/login.component';
 
-export const MODULE_ROUTES: Route[] =[
+export const MODULE_ROUTES: Route[] = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     { path: 'dashboard', component: HomeComponent },
     { path: 'user', component: UserComponent },
@@ -23,6 +24,7 @@ export const MODULE_ROUTES: Route[] =[
     { path: 'maps', component: MapsComponent },
     { path: 'upgrade', component: UpgradeComponent },
     { path: 'user-table', component: UserTableComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'email-composer', component: EmailComposerComponent, canActivate: [AuthGuardService] }
 ]
 
@@ -36,5 +38,6 @@ export const MODULE_COMPONENTS = [
     MapsComponent,
     UpgradeComponent,
     UserTableComponent,
+    LoginComponent,
     EmailComposerComponent
 ]

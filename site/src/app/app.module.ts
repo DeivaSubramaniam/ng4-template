@@ -10,8 +10,11 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
+import { AuthGuardService } from './dashboard/services/auth-guard.service';
+import { AuthService } from './dashboard/services/auth.service';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 @NgModule({
     imports:      [
@@ -23,7 +26,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
         RouterModule.forRoot([])
     ],
     declarations: [ AppComponent, DashboardComponent ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, AuthGuardService, AuthService],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

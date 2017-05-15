@@ -1,0 +1,26 @@
+<div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+    <div class="card">
+        <div class="header text-center">Login</div>
+        <div class="content">
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email" placeholder="Enter email" class="form-control" value="guille">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Password" class="form-control" value="1234">
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <input id="checkbox25" type="checkbox" unchecked="">
+                    <label for="checkbox25">
+                                                Subscribe to newsletter
+                                            </label>
+                </div>
+            </div>
+        </div>
+        <div class="footer text-center">
+            <button (click)="login({user:'gtamanaha', pass: '1234'});" class="btn btn-fill btn-danger btn-wd">Login</button>
+        </div>
+    </div>
+</div>

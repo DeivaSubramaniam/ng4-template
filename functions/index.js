@@ -12,7 +12,7 @@ const nodemailer = require('nodemailer');
 exports.login = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
         var userName = req.body.userName;
-        var password = req.body.passwrod;
+        var password = req.body.password;
         console.log(userName + ' - '+ password);
 
         var users = [

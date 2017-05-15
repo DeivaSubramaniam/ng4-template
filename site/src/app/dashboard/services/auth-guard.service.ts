@@ -13,7 +13,7 @@ export class AuthGuardService implements CanActivate {
         console.log('logged: ' + logged)
 
         if(!logged)
-            this.router.navigateByUrl('http://www.youtube.com');
+            this.router.navigate(['/notifications']);
 
         return logged;
     }
